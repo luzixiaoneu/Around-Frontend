@@ -15,13 +15,16 @@ function Main(props) {
 		return isLoggedIn ? <Redirect to="/home" /> : <Login handleLoggedIn ={handleLoggedIn}/>;
 	};
 
+	const showHome = () => {
+		return isLoggedIn ? <Home></Home> : <Redirect to={"/login"}></Redirect>
+	}
 	return (
 		<div className="main">
 			<Switch>
 				<Route path = "/" exact render={showLogIn}> </Route>
 				<Route path="/login" render={showLogIn} />
 				<Route path="/register" component={Register} />
-				<Route path="/home" component={Home} />
+				<Route path="/home"  render={showHome}/>
 			</Switch>
 		</div>
 	);

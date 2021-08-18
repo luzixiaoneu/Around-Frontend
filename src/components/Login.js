@@ -3,7 +3,7 @@ import {Form, Input, Button, message } from "antd";
 import {LockOutlined, UserOutlined} from "@ant-design/icons";
 import axios from "axios";
 import {BASE_URL} from "../constants";
-
+import {Link} from "react-router-dom";
 function Login(props) {
 
 	const {handleLoggedIn} = props;
@@ -25,6 +25,7 @@ function Login(props) {
 				if (res.status === 200) {
 					const {data} = res;
 					handleLoggedIn(data);
+					
 					message.success("Welcome");
 				}
 			}).catch(err => {
@@ -70,7 +71,7 @@ function Login(props) {
 				<Button type="primary" htmlType="submit" className="login-form-button">
 					Log in
 				</Button>
-				Or <a href="">register now!</a>
+				Or <Link to={"/register"}> register now!  </Link>
 			</Form.Item>
 		</Form>
 	);
